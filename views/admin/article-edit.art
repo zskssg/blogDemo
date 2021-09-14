@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/admin/css/article-edit.css">
+  <link rel="stylesheet" href="/admin/css/aside.css">
+
+</head>
+
+<body>
+  <div id="main" class="clearfix">
+    {{include "./common/aside.art"}}
+    <div class="right">
+      {{include "./common/header.art"}}
+
+      <div class="add-article" >
+        <h3>{{article ? '文章ID:'+article._id : '文章信息'}}</h3>
+        <!-- 
+          enctype指定表单数据的编码类型
+            默认application/x-www-form-urlencoded  name=zhangsan&age=20
+            multipart/form-data  将表单数据类型编码成二进制类型，可用于文件上传
+         -->
+        <form action="{{link}}" method="POST" enctype="multipart/form-data">
+          <div class="message">{{message}}</div>
+          <label>标题</label>
+          <input type="text" name="title" id="" value="{{article && article.title}}">
+          <label>作者</label>
+          <input type="text" name="author" id=""  readonly value="{{@userInfo._id}}">
+          <label>发布时间</label>
+          <input type="date" name="publishDate" id="" value="{{article && dateFormat(article.publishDate,'yyyy-mm-dd')}}">
+          <label>文章封面</label>
+          <input type="file" name="cover" id="file" value="">
+          <div>
+            <img src="" alt="文章封面预览" id="preview">
+          </div>
+          <label>内容</label>
+          <input type="text" name="" value="{{article && article.content}}" id="hidden" style="display: none;">
+          <div >
+            <textarea name="content" id="" cols="50" rows="10" ></textarea>
+          </div>
+          <input type="submit" value="提交">
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    我是底部&copy;zsk
+  </div>
+</body>
+<script>
+  var user = document.querySelector('.user>div');
+  var userUl = document.querySelector('.user>ul');
+  var flag = false
+  user.addEventListener('click', () => {
+    if (!flag) {
+      userUl.style.display = 'block';
+      flag = !flag;
+    } else {
+      userUl.style.display = 'none';
+      flag = !flag;
+
+    }
+
+  })
+  //封面预览
+  var file =document.querySelector('#file');
+  var preview = document.querySelector('#preview')
+  //当用户选择完文件以后
+  file.onchange = function(){
+    //创建文件读取对象
+    var reader = new FileReader();
+    //用户选择的文件列表
+    console.log(this.files[0]);
+    //读取文件 它是异步方法，不能用返回值拿到结果 需要监听onload方法获取结果
+    reader.readAsDataURL(this.files[0])
+    //监听onload事件
+    reader.onload = function(){
+      console.log(reader.result);
+      //将文件读取结果显示在页面中
+      preview.src = reader.result;
+    }
+  }
+  //修改文章时将原内容显示到textarea中
+  var textarea = document.querySelector('textarea');
+  var hidden = document.querySelector('#hidden');
+  console.log(hidden.nodeValue);
+  if(hidden.value)
+    textarea.innerHTML = hidden.value;
+</script>
+
+</html>

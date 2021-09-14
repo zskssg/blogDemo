@@ -1,0 +1,9 @@
+<!-- 侧边栏 -->
+<div class="left">
+  <h1>博客后台管理平台</h1>
+  <ul>
+    <li><a href="/admin/user" class="{{currentLink == 'user' ? 'active' : ''}}">用户管理</a></li>
+    <li><a href="/admin/article" class="{{currentLink == 'article' ? 'active' : ''}}">文章管理</a></li>
+
+  </ul>
+</div>

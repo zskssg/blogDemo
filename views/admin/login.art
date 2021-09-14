@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客管理登录</title>
+  <!--  /在模板中表示绝对根路径 -->
+  <link rel="stylesheet" href="/admin/css/login.css">
+</head>
+<body>
+  <div class="main">
+    <h2>博客登录</h2>
+    <form action="/admin/login" method="POST">
+      
+      <div>
+        <label>邮箱：</label>
+      <input type="text" name="email" id="">
+      </div>
+      <div>
+        <label>密码：</label>
+      <input type="password" name="password" id="">
+      </div>
+      
+        <label>记住邮箱名：</label>
+      <input type="checkbox" name="name" id="">
+      <div>
+        <input type="submit" value="登录" class="submit">
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+
+    var form = document.querySelector('form');
+    form.onsubmit = function(){
+      return change();
+    }
+    function change(params) {
+      var input = document.querySelectorAll('input');
+      var user = {  
+        email:input[0].value,
+        password:input[1].value
+      }
+      // 对用户输入的信息进行验证
+      // 如果用户邮箱没有填写
+      if(user.email.trim().length ==0 ){
+        alert('请输入邮箱');
+        //阻止程序向下执行
+        return false;
+      }
+      //如果用户密码没有填写
+      if(user.password.trim().length ==0 ){
+        alert('请输入密码');
+        //阻止程序向下执行
+        return false;
+      }
+      
+    }
+
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/admin/css/user.css">
+  <link rel="stylesheet" href="/admin/css/aside.css">
+
+</head>
+
+<body>
+  <div id="main" class="clearfix">
+    {{include "./common/aside.art"}}
+    <div class="right">
+      {{include "./common/header.art"}}
+      <div class="list">
+        <a href="/admin/user-edit" class="add">添加用户</a>
+        <span>共<i>{{count}}</i>个用户</span>
+        <table>
+          <thead>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>邮箱</th>
+            <th>角色</th>
+            <th>状态</th>
+            <th>操作</th>
+          </thead>
+          <tbody>
+            {{each users}}
+            <tr>
+              <td>{{@$value._id}}</td>
+              <td>{{$value.username}}</td>
+              <td>{{$value.email}}</td>
+              <td>{{$value.role == 'admin' ? '超级管理员' : '普通用户'}}</td>
+              <td>{{$value.state == 0 ? '启用' : '禁用'}}</td>
+              <td width="15%">
+                <a id="delete" href="javaScript:;" data-id="{{@$value._id}}">删除</a>
+                <a id="update" href="user-edit?id={{@$value._id}}">修改</a>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+
+      </div>
+      <ul class="paging">
+        <!-- page为字符型，进行减去操作的话会隐式转换成数字型 -->
+        <li class="pre-page" style="display: <%= page-1 <=0 ? 'none' : 'block'%>">
+          <a href="/admin/user?page=<%= page - 1 %>">上一页</a>
+        </li>
+        <% for(var i =1; i<=total; i++){ %>
+        <li><a href="/admin/user?page=<%= i %>">{{i}}</a></li>
+        <%}%>
+
+        <li class="down-page" style="display: <%= page-0+1 > total ? 'none' : 'block'%>">
+        <!-- 将page隐式转换成数值型，再加1，即先减再加 -->
+        <a href="/admin/user?page=<%= page - 0 + 1 %>">下一页</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer">
+    我是底部&copy;zsk
+  </div>
+  <!-- 模态框 -->
+  <div class="box">
+    <div class="modal">
+      <form action="/admin/delete" method="GET" id="form">
+        <h3>确定要删除这条用户吗？</h3>
+        <!-- 隐藏域 -->
+        <input type="hidden" name="id">
+        <a href="javaScript:;" class="back">取消</a>
+        <a href="javaScript:;" onclick="document:form.submit();">确定</a>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="/admin/js/common.js"></script>
+
+</html>

@@ -1,0 +1,192 @@
+body,
+html,
+header,
+main,
+footer,
+div,
+p,
+ul,
+li,
+ol,
+table,
+tr,
+td,
+th,
+a,
+img,
+h1,
+h2,
+p,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+#main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+#main .left,
+#main .right {
+  float: left;
+}
+
+#main .left {
+  width: 20%;
+  height: 800px;
+  background-color: #333;
+}
+
+#main .left h1 {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+  margin-top: 50px;
+}
+
+#main .left ul {
+  width: 100%;
+  border-top: 2px solid #eaeaea;
+}
+
+#main .left ul li {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+#main .left ul li a {
+  display: block;
+  width: 100%;
+  color: #fff;
+}
+
+#main .left ul li a:hover {
+  color: #333;
+  font-weight: 700;
+  font-size: 19px;
+  background-color: skyblue;
+}
+
+#main .right {
+  width: 80%;
+  height: 800px;
+}
+
+#main .right .user {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  border-bottom: 2px solid #333;
+  
+}
+
+#main .right .user div {
+  float: right;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+  margin-right: 200px;
+  background-color: #eaeaea;
+  cursor: pointer;
+}
+
+#main .right .user ul {
+  float: right;
+  display: none;
+  margin-top: 70px;
+  margin-right: -100px;
+  
+}
+
+#main .right .user ul a {
+  display: block;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  text-align: center;
+  color: #333;
+  background-color: #fff;
+  
+}
+
+#main .right .user ul a:hover {
+  font-size: 16px;
+  background-color: aqua;
+}
+
+.footer {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+}
+
+/* 添加用户样式 */
+#main .right .add-article {
+  width: 80%;
+  height: 650px;
+  margin: 20px auto;
+  padding-bottom: 150px;
+  overflow: auto;
+}
+#main .right .add-article .message{
+  display: block;
+  width: 300px;
+  height: 50px;
+  line-height: 50px;
+  color: red;
+  background-color: pink;
+  opacity: .5;
+}
+#main .right .add-article input{
+  display: block;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  margin-top: 10px;
+  border: 1px solid skyblue;
+  outline: none;
+}
+#main .right .add-article #preview{
+  width: 200px;
+  height: 100px;
+}
+#main .right .add-article input[type="submit"]{
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  margin-left: 100px;
+  margin-top: 30px;
+  background-color: teal;
+  cursor: pointer;
+}

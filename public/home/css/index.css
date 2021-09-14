@@ -1,0 +1,152 @@
+body,html,header,main,footer,div,p,ul,li,ol,table,tr,td,th,a,img,h1,h2,p,h4{
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+li{
+  list-style-type: none;
+}
+header{
+  position: relative;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #333;
+}
+header h1{
+  color: #fff;
+  margin-left: 40px;
+}
+header .user{
+  position: absolute;
+  bottom: 1px;
+  right: 100px;
+  width: 200px;
+  height: 50px;
+
+}
+header .user div{
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+
+}
+
+header .user ul{
+  display: none;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  z-index: 10;
+}
+header .user:hover ul{
+  display: block;
+}
+header .user ul a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+header .user ul a:hover{
+  background-color: tomato;
+}
+main{
+  position: relative;
+  width: 100%;
+  height: 1000px;
+}
+main .content{
+  width: 100%;
+  height: 900px;
+  overflow: auto;
+}
+main .content li{
+  float: left;
+  position: relative;
+  width: 25%;
+  height: 220px;
+  margin-left: 80px;
+  margin-top: 50px;
+  border: 1px solid rgba(189, 222, 245, .5);
+  overflow: hidden;
+}
+main .content li a{
+  color: #333;
+}
+main .content li img{
+  width:100%;
+  height: 150px;
+}
+main .content li p{
+  position: relative;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  padding: 3px 10px;
+  background-color: rgba(144, 215, 233, .2);
+  /* 一行显示省略号 */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+main .content li span{
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: sandybrown;
+}
+main .pagination{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 50px;
+}
+main .pagination ul{
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+
+}
+main .pagination ul li{
+  float: left;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 10px 10px;
+
+  border: 1px solid skyblue;
+}
+main .pagination ul .active{
+  background-color: tomato;
+}
+main .pagination ul .active a{
+  color: #fff;
+  font-size: 18px;
+}
+main .pagination ul li:hover{
+  background-color: tomato;
+}
+main .pagination ul .pre-page,main .pagination ul .down-page{
+  width: 80px;
+}
+
+footer{
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #333;
+}
+footer div{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+}

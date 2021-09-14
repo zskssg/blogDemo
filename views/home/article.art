@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章详情页</title>
+  <link rel="stylesheet" href="/home/css/article.css">
+</head>
+<body>
+  <header>
+    <h1>文章详情页</h1>
+    <div class="user">
+      <div><%= userInfo ? userInfo.username: "未登录"%></div>
+      <ul>
+        {{if userInfo}}
+        <li><a href="#">用户资料</a></li>
+        <li><a href="/home/logout">退出登录</a></li>
+        {{else}}
+        <li><a href="/admin/login">前去登录？</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="context-header">
+      <h2>{{article.title}}</h2>
+      <h3>作者：{{article.author.username}}</h3>
+      <span>{{dateFormat(article.publishDate,'yyyy-mm-dd')}}</span>
+    <hr>
+    </div>
+    <div class="context">
+      
+      {{@article.content}}
+    </div>
+    <div id="discuss">
+      {{if userInfo}}
+      <div>
+        <h2>评论</h2>
+        <form action="/home/comment" method="post">
+          <textarea name="content" id=""  maxlength="100"></textarea>
+          <!-- 用户id -->
+          <input type="hidden" name="uid" value="{{@userInfo._id}}">
+          <!--文章id -->
+          <input type="hidden" name="aid" value="{{@article._id}}">
+          <input type="submit" value="提交" class="button">
+        </form>
+      </div>
+      
+      <ul class="list">
+        {{each comment}}
+        <li>
+          <span>{{$value.uid.username}}</span><span>{{dateFormat($value.time,"yyyy-mm-dd")}}</span><span>{{$value.uid.email}}</span>
+          <p>{{$value.content}}</p>
+        </li>
+        {{/each}}
+        
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <div>
+      底部，&copy;zsk
+    </div>
+  </footer>
+      {{else}}
+      <div>
+        <h2>登录之后才可以评论哦</h2>
+        
+      </div>
+      <ul class="list">
+        {{each comment}}
+        <li>
+          <span>{{$value.uid.username}}</span><span>{{dateFormat($value.time,"yyyy-mm-dd")}}</span><span>{{$value.uid.email}}</span>
+          <p>{{$value.content}}</p>
+        </li>
+        {{/each}}
+        
+      </ul>
+    </div>
+  </main>
+  <footer class="">
+    <div>
+      底部，&copy;zsk
+    </div>
+  </footer>
+      {{/if}}
+
+</body>
+</html>

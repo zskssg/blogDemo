@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>博客列表</title>
+  <link rel="stylesheet" href="/home/css/index.css">
+</head>
+<body>
+  <header>
+    <h1>博客列表</h1>
+    <div class="user">
+      <div><%= userInfo  ? userInfo.username: "未登录"%></div>
+      <ul>
+        {{if userInfo}}
+        <li><a href="#">用户资料</a></li>
+        <li><a href="/home/logout">退出登录</a></li>
+        {{else}}
+        <li><a href="/admin/login">前去登录？</a></li>
+        {{/if}}
+      </ul>
+    </div>
+    
+  </header>
+  <main>
+    <ul class="content">
+      {{each result.records}}
+      <li>
+        <a href="/home/article?id={{$value._id}}">
+          <img src="{{$value.cover}}" alt="博客预览图">
+          <p>{{$value.title}}</p>
+          <span>作者：{{$value.author.username}}</span>
+          <span>{{dateFormat($value.publishDate,'yyyy-mm-dd')}}</span>
+        </a>
+      </li>
+      {{/each}}
+      
+    </ul>
+    <div class="pagination">
+      <ul class="paging">
+        <!-- page为字符型，进行减去操作的话会隐式转换成数字型 -->
+        {{if result.page>1}}
+        <li class="pre-page" >
+          <a href="/home/?page={{result.page - 1}}">上一页</a>
+        </li>
+        {{/if}}
+        {{each result.display}}
+        <li class="{{$value == result.page ? 'active' : ''}}">
+          <a href="/home/?page={{$value}}" >{{$value}}</a>
+        </li>
+        {{/each}}
+        {{if result.page < result.pages}}
+        <li class="down-page">
+        <!-- 将page隐式转换成数值型，再加1，即先减再加 -->
+        <a href="/home/?page={{result.page - 0 + 1}}">下一页</a>
+        </li>
+        {{/if}}
+
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <div>
+      底部，&copy;zsk
+    </div>
+  </footer>
+</body>
+</html>

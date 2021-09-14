@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/admin/css/user-edit.css">
+  <link rel="stylesheet" href="/admin/css/aside.css">
+
+</head>
+
+<body>
+  <div id="main" class="clearfix">
+    {{include "./common/aside.art"}}
+    <div class="right">
+      {{include "./common/header.art"}}
+
+      <div class="add-user">
+        <h3>{{user ? '用户ID:'+user._id : '用户信息'}}</h3>
+        <form action="{{link}}" method="POST">
+          <div class="message">{{message}}</div>
+          <label>用户名</label>
+          <input type="text" name="username" id="" value="{{ user && user.username}}">
+          <label>邮箱</label>
+          <input type="email" name="email" id="" value="{{user && user.email}}">
+          <label>密码</label>
+          <input type="password" name="password" id="" value="">
+          <label>角色</label>
+          <select name="role" id="" >
+            <option value="admin" {{ user && user.role=='admin' ? 'selected' : ''}}>超级管理员</option>
+            <option value="normal" {{ user && user.role=='normal' ? 'selected' : ''}}>普通用户</option>
+          </select>
+          <label>状态</label>
+          <select name="state" id="" >
+            <option value="0" {{ user && user.state=='0' ? 'selected' : ''}}>启用</option>
+            <option value="1" {{ user && user.state=='1' ? 'selected' : ''}}>禁用</option>
+          </select>
+          <input type="submit" value="提交">
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    我是底部&copy;zsk
+  </div>
+</body>
+<script>
+  var user = document.querySelector('.user>div');
+  var userUl = document.querySelector('.user>ul');
+  var flag = false
+  user.addEventListener('click', () => {
+    if (!flag) {
+      userUl.style.display = 'block';
+      flag = !flag;
+    } else {
+      userUl.style.display = 'none';
+      flag = !flag;
+
+    }
+
+  })
+</script>
+
+</html>

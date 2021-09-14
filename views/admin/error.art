@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>错误页面</title>
+  <style>
+
+    h1{
+      display: inline-block;
+      width: 100%;
+      height: 100px;
+      line-height: 100px;
+      padding-left: 40px;
+      margin-bottom: 20px;
+      background-color: pink;
+      opacity: .5;
+    }
+    p{
+      
+      margin-left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h1>{{message}}</h1>
+    <p><span>3</span>秒中后会跳转到登录页面</p>
+  </div>
+</body>
+<script>
+  
+  var span = document.querySelector('span');
+  var i =3;
+  var timer = setInterval(() => {
+    span.innerHTML =i;
+    if(i<=0){
+      location.href = '/admin/login';
+      clearInterval(timer);
+    }
+    i--;
+  }, 1000);
+</script>
+</html>

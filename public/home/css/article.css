@@ -1,0 +1,147 @@
+body,html,header,main,footer,div,p,ul,li,ol,table,tr,td,th,a,img,h1,h2,p,h4{
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+li{
+  list-style-type: none;
+}
+header{
+  position: relative;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #333;
+}
+header h1{
+  color: #fff;
+  margin-left: 40px;
+}
+header .user{
+  position: absolute;
+  bottom: 1px;
+  right: 100px;
+  width: 200px;
+  height: 50px;
+
+}
+header .user div{
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+
+}
+
+header .user ul{
+  display: none;
+  position: relative;
+  text-align: center;
+  background-color: #fff;
+  z-index: 10;
+}
+header .user:hover ul{
+  display: block;
+}
+header .user ul a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+header .user ul a:hover{
+  background-color: tomato;
+}
+main{
+  width: 100%;
+
+}
+main .context-header{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 50px;
+}
+main .context{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+main #discuss{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+main #discuss h2{
+  width: 100%;
+  background-color: skyblue;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+main #discuss textarea{
+  width: 100%;
+  height: 50px;
+  border: 1px solid skyblue;
+  outline: none;
+  resize: none;
+}
+main #discuss .button{
+  display: block;
+  width: 100px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 30px;
+  background-color: skyblue;
+  outline: none;
+  border: 3px solid tomato;
+  cursor: pointer;
+}
+main #discuss .button:hover{
+  color: #fff;
+  background-color: tomato;
+  border: 3px solid skyblue;
+  
+}
+main #discuss .list{
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+}
+main #discuss .list li{
+  width: 95%;
+  height: 60px;
+  font-size: 14px;
+  margin: 5px auto;
+  padding: 10px;
+  background-color: aqua;
+}
+main #discuss .list li span{
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding-bottom: 10px;
+}
+
+footer{
+
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #333;
+}
+.footer{
+  position:absolute;
+  bottom: 0;
+}
+footer div{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+}
