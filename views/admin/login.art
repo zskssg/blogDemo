@@ -21,8 +21,6 @@
         <label>密码：</label>
       <input type="password" name="password" id="">
       </div>
-      
-        <label>记住邮箱名：</label>
       <input type="checkbox" name="name" id="">
       <div>
         <input type="submit" value="登录" class="submit">

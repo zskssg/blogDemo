@@ -9,6 +9,7 @@ module.exports = async (req,res)=>{
 
   //查询文章数据
   let articles = await pagination(Article).page(page).size(6).display(5).find().populate('author').exec();
+  //将数据类型转换为json字符串
   let str = JSON.stringify(articles);
   let result = JSON.parse(str);
   res.render('home/index.art',{
